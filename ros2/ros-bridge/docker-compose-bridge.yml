@@ -1,0 +1,11 @@
+services:
+  ros-bridge:
+    image: ros-bridge:latest
+    build:
+      context: ./ros-bridge
+      dockerfile: Dockerfile
+    container_name: ros-bridge
+    environment:
+      ROS_IP: "127.0.0.1"
+      ROS_MASTER_URI: "http://127.0.0.1:11311"
+    network_mode: host

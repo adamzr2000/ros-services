@@ -1,0 +1,26 @@
+services:
+  camera:
+    image: astra-camera:latest 
+    build:
+      context: ./astra-camera
+      dockerfile: Dockerfile      
+    container_name: camera
+    environment:
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    devices:
+      - "/dev/astra:/dev/astra"
+    network_mode: host
+    privileged: true
+
+  ros-humble-dev:
+    image: ros-humble-dev:latest 
+    build:
+      context: ./ros-humble-dev
+      dockerfile: Dockerfile      
+    container_name: ros-humble-dev
+    environment:
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    network_mode: host
+    tty: true
+    stdin_open: true
+    command: ["bash", "-lc", "sleep infinity"]

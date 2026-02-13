@@ -1,0 +1,28 @@
+services:
+  camera:
+    image: astra-camera:latest 
+    build:
+      context: ./astra-camera
+      dockerfile: Dockerfile      
+    container_name: camera
+    devices:
+      - "/dev/astra:/dev/astra"
+    networks:
+      - ros-net
+    privileged: true
+  ros-vnc:
+    image: tiryoh/ros2-desktop-vnc
+    container_name: ros-vnc
+    ports:
+      - "6080:80"
+    security_opt:
+      - seccomp=unconfined
+    shm_size: "512m"
+    restart: "no"
+    networks:
+      - ros-net
+
+networks:
+  ros-net:
+    driver: bridge
+    name: ros-net
