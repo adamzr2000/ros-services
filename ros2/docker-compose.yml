@@ -12,12 +12,12 @@ services:
     network_mode: host
     privileged: true
 
-  humble-dev:
-    image: humble-dev:latest 
+  ros-humble-dev:
+    image: ros-humble-dev:latest 
     build:
-      context: ./humble-dev
+      context: ./ros-humble-dev
       dockerfile: Dockerfile      
-    container_name: humble-dev
+    container_name: ros-humble-dev
     environment:
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
     network_mode: host

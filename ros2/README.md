@@ -13,3 +13,6 @@ services:
     ipc: host
     pid: host
 ```
+
+
+[DDS setting](https://autowarefoundation.github.io/autoware-documentation/main/installation/additional-settings-for-developers/network-configuration/dds-settings/#tune-dds-settings)
